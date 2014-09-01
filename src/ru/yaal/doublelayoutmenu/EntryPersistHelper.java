@@ -24,9 +24,11 @@ class EntryPersistHelper {
         BACKUP_HELPER.backup(entry.getFile());
         Properties properties = new Properties();
         File entryFile = entry.getFile();
-        properties.load(new FileInputStream(entryFile));
+        final FileInputStream fis = new FileInputStream(entryFile);
+        properties.load(fis);
         properties.setProperty(NAME_PROPERTY, entry.getName());
         properties.setProperty(COMMENT_PROPERTY, entry.getComment());
         properties.store(new FileOutputStream(entryFile), "[Desktop Entry]");
+        fis.close();
     }
 }
