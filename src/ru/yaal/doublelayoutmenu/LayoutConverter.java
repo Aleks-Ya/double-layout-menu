@@ -6,7 +6,7 @@ package ru.yaal.doublelayoutmenu;
 class LayoutConverter {
     static String engToRus(String rus) {
         for (Character c : rus.toCharArray()) {
-            c.
         }
+        return null;
     }
 }

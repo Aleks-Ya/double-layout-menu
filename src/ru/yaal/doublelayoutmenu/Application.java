@@ -1,6 +1,7 @@
 package ru.yaal.doublelayoutmenu;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ class Application {
     private static final File ENTRY_DIR = new File("/usr/share/applications");
     private final Statistic statistic = new Statistic();
 
-    void execute() {
+    void execute() throws IOException {
         if (!ENTRY_DIR.canRead()) {
             throw new IllegalStateException("Can't read " + ENTRY_DIR.getAbsolutePath());
         }
