@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.util.Arrays;
 
 class Helper {
-     static String content(String name, String comment) {
+    static String content(String name, String comment) {
         return "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
                 "Comment=" + comment + "\n" +
@@ -20,10 +20,16 @@ class Helper {
                 "X-KDE-Protocols=skype";
     }
 
-    static File createEntryFile(String content) throws IOException {
-        File entryFile = File.createTempFile("DoubleLayoutMenu_", ".tmp");
+    static File createEntryFile(File dir, String content) throws IOException {
+        File entryFile = Files.createTempFile(dir.toPath(), "DoubleLayoutMenu_", ".desktop").toFile();
         entryFile.deleteOnExit();
+        Files.write(entryFile.toPath(), Arrays.asList(content));
+        return entryFile;
+    }
 
+    static File createEntryFile(String content) throws IOException {
+        File entryFile = File.createTempFile("DoubleLayoutMenu_", ".desktop");
+        entryFile.deleteOnExit();
         Files.write(entryFile.toPath(), Arrays.asList(content));
         return entryFile;
     }
