@@ -19,7 +19,7 @@ class EntryDir {
         return result;
     }
 
-    static class DesktopFilenameFilter implements FilenameFilter {
+    private static class DesktopFilenameFilter implements FilenameFilter {
         @Override
         public boolean accept(File dir, String name) {
             return name.endsWith(".desktop");
