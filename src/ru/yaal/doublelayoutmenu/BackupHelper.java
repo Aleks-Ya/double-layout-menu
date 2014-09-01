@@ -8,7 +8,7 @@ import java.nio.file.Files;
  * Делает резервную копию файла пункта меню.
  */
 class BackupHelper {
-    void backup(File file) throws IOException {
+    static void backup(File file) throws IOException {
         final String fileName = file.getName();
         String backupFileName = fileName + ".bak";
         File backupFile = new File(file.getParent(), backupFileName);

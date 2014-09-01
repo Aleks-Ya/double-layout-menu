@@ -12,7 +12,6 @@ import java.util.Properties;
 class EntryPersistHelper {
     private static final String NAME_PROPERTY = "Name";
     private static final String COMMENT_PROPERTY = "Comment";
-    private static final BackupHelper BACKUP_HELPER = new BackupHelper();
 
     static Entry read(File entryFile) throws IOException {
         Properties properties = new Properties();
@@ -21,7 +20,7 @@ class EntryPersistHelper {
     }
 
     static void save(Entry entry) throws IOException {
-        BACKUP_HELPER.backup(entry.getFile());
+        BackupHelper.backup(entry.getFile());
         Properties properties = new Properties();
         File entryFile = entry.getFile();
         final FileInputStream fis = new FileInputStream(entryFile);
