@@ -1,0 +1,3 @@
+apply plugin : 'java'
+sourceSets.main.java.srcDir 'src'
+version='1.0-SNAPSHOT'
