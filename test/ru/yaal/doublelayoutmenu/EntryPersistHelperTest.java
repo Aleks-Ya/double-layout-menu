@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
+import static ru.yaal.doublelayoutmenu.Helper.content;
 
 public class EntryPersistHelperTest {
 
@@ -31,20 +32,6 @@ public class EntryPersistHelperTest {
         entryPath = entryFile.toPath();
 
         Files.write(entryPath, Arrays.asList(content));
-    }
-
-    private String content(String name, String comment) {
-        return "[Desktop Entry]\n" +
-                "Name=" + name + "\n" +
-                "Comment=" + comment + "\n" +
-                "Exec=env PULSE_LATENCY_MSEC=60 skype %U\n" +
-                "Icon=skype.png\n" +
-                "Terminal=false\n" +
-                "Type=Application\n" +
-                "Encoding=UTF-8\n" +
-                "Categories=Network;Application;\n" +
-                "MimeType=x-scheme-handler/skype;\n" +
-                "X-KDE-Protocols=skype";
     }
 
     @Test
