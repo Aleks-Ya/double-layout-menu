@@ -13,7 +13,7 @@ class Application {
 
     void execute() throws IOException {
         if (!ENTRY_DIR.canRead()) {
-            throw new IllegalStateException("Can't read " + ENTRY_DIR.getAbsolutePath());
+            throw new IOException("Can't read " + ENTRY_DIR.getAbsolutePath());
         }
         List<Entry> entries = EntryDir.getEntries(ENTRY_DIR);
         for (Entry entry : entries) {
