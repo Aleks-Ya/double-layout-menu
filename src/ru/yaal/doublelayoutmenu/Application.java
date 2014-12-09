@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Использует классы приложения для достижения нужного результата.
+ * todo Cover unit tests
  */
 class Application {
     private static final File ENTRY_DIR = new File("/usr/share/applications");
