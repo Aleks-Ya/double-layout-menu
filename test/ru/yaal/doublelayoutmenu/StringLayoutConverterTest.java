@@ -16,8 +16,8 @@ public class StringLayoutConverterTest {
 
     @Test
     public void upperCase() {
-        final String source = "QWERTYUIOP[]ASDFGHJKL;'ZXCVBNM,./";
-        final String exp = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ..";
+        final String source = "QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?";
+        final String exp = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,";
         final String act = StringLayoutConverter.engToRus(source);
         assertEquals(act, exp);
     }

@@ -2,13 +2,15 @@ package ru.yaal.doublelayoutmenu;
 
 /**
  * Конвертирует буквы из английской раскладки в русскую.
- * todo Написать реализацию
- * todo Покрыть unit-тестами
  */
 class StringLayoutConverter {
+    private static final CharLayoutConverter converter = new EngToRusCharLayoutConverter();
+
     static String engToRus(String rus) {
-        for (Character c : rus.toCharArray()) {
+        StringBuilder result = new StringBuilder();
+        for (char c : rus.toCharArray()) {
+            result.append(converter.convert(c));
         }
-        return null;
+        return result.toString();
     }
 }
