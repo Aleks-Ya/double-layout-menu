@@ -4,13 +4,13 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class LayoutConverterTest {
+public class StringLayoutConverterTest {
 
     @Test
     public void lowCase() {
         final String source = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
         final String exp = "йцукенгшщзхъфывапролджэячсмитьбю.";
-        final String act = LayoutConverter.engToRus(source);
+        final String act = StringLayoutConverter.engToRus(source);
         assertEquals(act, exp);
     }
 
@@ -18,7 +18,7 @@ public class LayoutConverterTest {
     public void upperCase() {
         final String source = "QWERTYUIOP[]ASDFGHJKL;'ZXCVBNM,./";
         final String exp = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ..";
-        final String act = LayoutConverter.engToRus(source);
+        final String act = StringLayoutConverter.engToRus(source);
         assertEquals(act, exp);
     }
 }

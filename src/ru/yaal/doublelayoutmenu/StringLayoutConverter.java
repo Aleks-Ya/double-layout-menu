@@ -5,7 +5,7 @@ package ru.yaal.doublelayoutmenu;
  * todo Написать реализацию
  * todo Покрыть unit-тестами
  */
-class LayoutConverter {
+class StringLayoutConverter {
     static String engToRus(String rus) {
         for (Character c : rus.toCharArray()) {
         }

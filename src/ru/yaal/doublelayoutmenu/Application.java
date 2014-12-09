@@ -19,7 +19,7 @@ class Application {
         List<Entry> entries = EntryDir.getEntries(ENTRY_DIR);
         for (Entry entry : entries) {
             String comment = entry.getComment();
-            String rusName = LayoutConverter.engToRus(entry.getName());
+            String rusName = StringLayoutConverter.engToRus(entry.getName());
             if (!comment.contains(rusName)) {
                 entry.setComment(comment + " " + rusName);
                 if (entry.getFile().canWrite()) {
