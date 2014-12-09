@@ -9,14 +9,18 @@ import java.util.List;
  * todo Cover unit tests
  */
 class Application {
-    private static final File ENTRY_DIR = new File("/usr/share/applications");
+    private final File entryDir;
     private final Statistic statistic = new Statistic();
 
+    Application(File entryDir) {
+        this.entryDir = entryDir;
+    }
+
     void execute() throws IOException {
-        if (!ENTRY_DIR.canRead()) {
-            throw new IOException("Can't read " + ENTRY_DIR.getAbsolutePath());
+        if (!entryDir.canRead()) {
+            throw new IOException("Can't read " + entryDir.getAbsolutePath());
         }
-        List<Entry> entries = EntryDir.getEntries(ENTRY_DIR);
+        List<Entry> entries = EntryDir.getEntries(entryDir);
         for (Entry entry : entries) {
             String comment = entry.getComment();
             String rusName = StringLayoutConverter.engToRus(entry.getName());
