@@ -6,6 +6,7 @@ sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
 
 dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.7', 'org.slf4j:slf4j-simple:1.7.7'
     testCompile 'org.testng:testng:6.8.8'
 }
 

@@ -1,5 +1,8 @@
 package ru.yaal.doublelayoutmenu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.List;
 class Application {
     private final File entryDir;
     private final Statistic statistic = new Statistic();
+    private Logger LOG = LoggerFactory.getLogger(Application.class);
 
     Application(File entryDir) {
         this.entryDir = entryDir;
@@ -22,6 +26,7 @@ class Application {
         }
         List<Entry> entries = EntryDir.getEntries(entryDir);
         for (Entry entry : entries) {
+            LOG.info("Process entry: " + entry.getName());
             String comment = entry.getComment();
             String rusName = StringLayoutConverter.engToRus(entry.getName());
             if (!comment.contains(rusName)) {
@@ -30,7 +35,7 @@ class Application {
                     EntryPersistHelper.save(entry);
                     statistic.incProcessed(entry);
                 } else {
-                    System.err.println("Can't write to " + entry.getFile().getAbsolutePath());
+                    LOG.warn("Can't write to " + entry.getFile().getAbsolutePath());
                 }
             } else {
                 statistic.incPassed(entry);
