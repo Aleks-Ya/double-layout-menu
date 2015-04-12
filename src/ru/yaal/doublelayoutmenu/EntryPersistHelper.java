@@ -3,7 +3,9 @@ package ru.yaal.doublelayoutmenu;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.Properties;
 
 /**
@@ -23,7 +25,7 @@ class EntryPersistHelper {
         BackupHelper.backup(entry.getFile());
         Properties properties = new Properties();
         File entryFile = entry.getFile();
-        final FileInputStream fis = new FileInputStream(entryFile);
+        final Reader fis = new FileReader(entryFile);
         properties.load(fis);
         properties.setProperty(NAME_PROPERTY, entry.getName());
         properties.setProperty(COMMENT_PROPERTY, entry.getComment());

@@ -5,6 +5,7 @@ package ru.yaal.doublelayoutmenu;
  */
 class StatisticFormatter {
     static String format(Statistic statistic) {
-        throw new UnsupportedOperationException();
+        return String.format("Passed: %s\n Processed: %s\n",
+                statistic.getPassed(), statistic.getProcessed());
     }
 }

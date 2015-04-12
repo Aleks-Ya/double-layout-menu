@@ -28,7 +28,7 @@ class Application {
         for (Entry entry : entries) {
             LOG.info("Process entry: " + entry.getName());
             String comment = entry.getComment();
-            String rusName = StringLayoutConverter.engToRus(entry.getName());
+            String rusName = "~" + StringLayoutConverter.engToRus(entry.getName()) + "~";
             if (!comment.contains(rusName)) {
                 entry.setComment(comment + " " + rusName);
                 if (entry.getFile().canWrite()) {
@@ -38,10 +38,10 @@ class Application {
                     LOG.warn("Can't write to " + entry.getFile().getAbsolutePath());
                 }
             } else {
+                LOG.info("Passed: " + entry);
                 statistic.incPassed(entry);
             }
         }
-
         System.out.println(StatisticFormatter.format(statistic));
     }
 }

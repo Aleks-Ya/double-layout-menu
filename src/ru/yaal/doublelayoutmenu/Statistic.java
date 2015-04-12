@@ -11,7 +11,7 @@ class Statistic {
     private List<Entry> processed = new ArrayList<>();
 
     void incPassed(Entry entry) {
-        throw new UnsupportedOperationException();
+        passed.add(entry);
     }
 
     void incProcessed(Entry entry) {
