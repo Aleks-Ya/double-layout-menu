@@ -27,7 +27,7 @@ public class ApplicationTest {
         List<String> expLines = Arrays.asList("Name=" + expName, "Comment=" + expComment);
         Files.write(entry1File.toPath(), expLines);
 
-        Application app = new Application(entryDir);
+        Application app = new Application(entryDir, Files.createTempDirectory("DoubleLayoutMenu_").toFile());
         app.execute();
 
         Entry actEntry = EntryPersistHelper.read(entry1File);

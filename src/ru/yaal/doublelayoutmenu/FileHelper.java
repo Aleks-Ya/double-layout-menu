@@ -53,4 +53,27 @@ class FileHelper {
         }
         LOG.info("Backup dir: " + backupDir.getAbsolutePath());
     }
+
+    static void copyDesktops(File fromDir, File toDir) throws IOException {
+        LOG.info("Copy from: " + fromDir);
+        LOG.info("Copy to: " + toDir);
+        if (!fromDir.exists()) {
+            throw new IOException("FromDir doesn't exists: " + fromDir.getAbsolutePath());
+        }
+        if (!toDir.exists()) {
+            throw new IOException("ToDir doesn't exists: " + toDir.getAbsolutePath());
+        }
+        File[] files = fromDir.listFiles(new DesktopFilenameFilter());
+        LOG.info("Files to copy: " + files.length);
+        for (File fromFile : files) {
+            File toFile = new File(toDir, fromFile.getName());
+            if (!toFile.exists()) {
+                Files.copy(fromFile.toPath(), toFile.toPath());
+                LOG.info("File copied: " + toFile.getAbsolutePath());
+            } else {
+                LOG.info("File already exists: " + toFile.getAbsolutePath());
+            }
+        }
+
+    }
 }

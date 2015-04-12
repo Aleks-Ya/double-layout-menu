@@ -1,8 +1,6 @@
 package ru.yaal.doublelayoutmenu;
 
 import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +15,5 @@ class EntryDir {
             result.add(EntryPersistHelper.read(entryFile));
         }
         return result;
-    }
-
-    private static class DesktopFilenameFilter implements FilenameFilter {
-        @Override
-        public boolean accept(File dir, String name) {
-            return name.endsWith(".desktop");
-        }
     }
 }

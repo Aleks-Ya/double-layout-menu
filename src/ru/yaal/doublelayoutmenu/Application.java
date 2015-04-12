@@ -13,17 +13,23 @@ import java.util.List;
 class Application {
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
     private final File entryDir;
+    private final File commonEntryDir;
     private final Statistic statistic = new Statistic();
 
-    Application(File entryDir) {
-        this.entryDir = entryDir;
+    Application(File userEntryDir, File commonEntryDir) {
+        this.entryDir = userEntryDir;
+        this.commonEntryDir = commonEntryDir;
     }
 
     void execute() throws IOException {
         if (!entryDir.canRead()) {
-            throw new IOException("Can't read " + entryDir.getAbsolutePath());
+            throw new IOException("Can't read: " + commonEntryDir.getAbsolutePath());
+        }
+        if (!entryDir.canWrite()) {
+            throw new IOException("Can't write: " + entryDir.getAbsolutePath());
         }
         FileHelper.backupDir(entryDir);
+        FileHelper.copyDesktops(commonEntryDir, entryDir);
         List<Entry> entries = EntryDir.getEntries(entryDir);
         for (Entry entry : entries) {
             LOG.info("Process entry: " + entry.getName());
