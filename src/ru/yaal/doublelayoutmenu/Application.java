@@ -23,6 +23,7 @@ class Application {
         if (!entryDir.canRead()) {
             throw new IOException("Can't read " + entryDir.getAbsolutePath());
         }
+        BackupHelper.backupDir(entryDir);
         List<Entry> entries = EntryDir.getEntries(entryDir);
         for (Entry entry : entries) {
             LOG.info("Process entry: " + entry.getName());

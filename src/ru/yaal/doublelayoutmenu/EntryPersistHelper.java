@@ -44,7 +44,6 @@ class EntryPersistHelper {
     }
 
     static void save(Entry entry) throws IOException {
-        BackupHelper.backup(entry.getFile());
         List<String> fileContent = Files.readAllLines(entry.getFile().toPath());
         boolean commentFound = false;
         String newComment = COMMENT_PROPERTY + "=" + entry.getComment();
