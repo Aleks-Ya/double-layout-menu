@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.isEmptyString;
 import static org.testng.Assert.assertEquals;
 import static ru.yaal.doublelayoutmenu.Helper.content;
 import static ru.yaal.doublelayoutmenu.Helper.createEntryFile;
@@ -20,6 +22,15 @@ public class EntryPersistHelperTest {
         File entryFile = createEntryFile(content(name, comment));
         Entry entry = EntryPersistHelper.read(entryFile);
         assertEquals(entry.getName(), name);
+        assertEquals(entry.getComment(), comment);
+        assertEquals(entry.getFile(), entryFile);
+    }
+
+    @Test
+    public void readEmptyName() throws Exception {
+        File entryFile = createEntryFile(content("", comment));
+        Entry entry = EntryPersistHelper.read(entryFile);
+        assertThat(entry.getName(), isEmptyString());
         assertEquals(entry.getComment(), comment);
         assertEquals(entry.getFile(), entryFile);
     }

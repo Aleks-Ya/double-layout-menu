@@ -27,10 +27,14 @@ class EntryPersistHelper {
             String line;
             while ((line = br.readLine()) != null) {
                 if (line.trim().startsWith(NAME_PROPERTY)) {
-                    newEntry.setName(line.split("=")[1]);
+                    String[] texts = line.split("=");
+                    String newText = (texts.length >= 2) ? texts[1] : "";
+                    newEntry.setName(newText);
                 }
                 if (line.trim().startsWith(COMMENT_PROPERTY)) {
-                    newEntry.setComment(line.split("=")[1]);
+                    String[] texts = line.split("=");
+                    String newText = (texts.length >= 2) ? texts[1] : "";
+                    newEntry.setComment(newText);
                 }
             }
         } catch (Exception e) {

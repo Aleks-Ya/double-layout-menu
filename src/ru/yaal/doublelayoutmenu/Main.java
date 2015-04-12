@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) throws IOException {
-        File entryDir = new File(System.getProperty("user.home"), "share/applications");
+        File entryDir = new File(System.getProperty("user.home"), ".local/share/applications");
         new Application(entryDir).execute();
     }
 }
