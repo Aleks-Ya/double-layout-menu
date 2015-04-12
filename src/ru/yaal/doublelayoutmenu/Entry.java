@@ -10,6 +10,9 @@ class Entry {
     private String comment;
     private File file;
 
+    public Entry() {
+    }
+
     public Entry(String name, String comment, File file) {
         this.name = name;
         this.comment = comment;

@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Использует классы приложения для достижения нужного результата.
- * todo Cover unit tests
  */
 class Application {
     private final File entryDir;

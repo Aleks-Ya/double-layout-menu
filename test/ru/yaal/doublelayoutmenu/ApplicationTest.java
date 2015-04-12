@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
@@ -15,17 +17,21 @@ public class ApplicationTest {
     @Test
     public void testExecute() throws Exception {
         File entryDir = Files.createTempDirectory("DoubleLayoutMenu_").toFile();
+        entryDir.deleteOnExit();
         LOG.info("Entry dir: " + entryDir);
 
         File entry1File = File.createTempFile("Entry_", ".desktop", entryDir);
-        Entry entry1 = new Entry("Entry1", "Comment to entry1", entry1File);
-        EntryPersistHelper.save(entry1);
+        entry1File.deleteOnExit();
+        String expName = "Entry1";
+        String expComment = "Comment to entry1";
+        List<String> expLines = Arrays.asList("Name=" + expName, "Comment=" + expComment);
+        Files.write(entry1File.toPath(), expLines);
 
         Application app = new Application(entryDir);
         app.execute();
 
         Entry actEntry = EntryPersistHelper.read(entry1File);
-        assertEquals(actEntry.getName(), entry1.getName());
-        assertEquals(actEntry.getComment(), entry1.getComment()  + " ~Утекн1~");
+        assertEquals(actEntry.getName(), expName);
+        assertEquals(actEntry.getComment(), expComment + " ~Утекн1~");
     }
 }
