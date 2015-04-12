@@ -9,12 +9,12 @@ public class EngToRusCharLayoutConverterTest {
 
     @Test
     public void convert() {
-        final String srcLowerCase = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
-        final String srcUpperCase = "QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?";
+        final String srcLowerCase = "qwertyuiop[]asdfghjkl;'zxcvbnm,./1234567890";
+        final String srcUpperCase = "QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>?1234567890";
         final String src = srcLowerCase + srcUpperCase;
 
-        final String expLowerCase = "йцукенгшщзхъфывапролджэячсмитьбю.";
-        final String expUpperCase = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,";
+        final String expLowerCase = "йцукенгшщзхъфывапролджэячсмитьбю.1234567890";
+        final String expUpperCase = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,1234567890";
         final String exp = expLowerCase + expUpperCase;
 
         assertEquals(srcLowerCase.length(), expLowerCase.length());
