@@ -5,15 +5,13 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
 
 /**
  * Делает резервную копию файла пункта меню.
  */
-class BackupHelper {
-    private static final Logger LOG = LoggerFactory.getLogger(BackupHelper.class);
+class FileHelper {
+    private static final Logger LOG = LoggerFactory.getLogger(FileHelper.class);
 
     @Deprecated
     static void backup(File file) throws IOException {

@@ -10,20 +10,20 @@ import java.nio.file.Paths;
 
 import static org.testng.Assert.assertTrue;
 
-public class BackupHelperTest {
-    private static final Logger LOG = LoggerFactory.getLogger(BackupHelperTest.class);
+public class FileHelperTest {
+    private static final Logger LOG = LoggerFactory.getLogger(FileHelperTest.class);
 
     @Test
     public void backup() throws Exception {
         File origin = File.createTempFile("DoubleLayoutMenu_BackupHelperTest_", ".tmp");
 
-        BackupHelper.backup(origin);
+        FileHelper.backup(origin);
         assertTrue(new File(origin.getAbsolutePath() + ".bak").exists());
 
-        BackupHelper.backup(origin);
+        FileHelper.backup(origin);
         assertTrue(new File(origin.getAbsolutePath() + ".bak1").exists());
 
-        BackupHelper.backup(origin);
+        FileHelper.backup(origin);
         assertTrue(new File(origin.getAbsolutePath() + ".bak2").exists());
     }
 
@@ -35,7 +35,7 @@ public class BackupHelperTest {
         File createdFile = Files.createFile(Paths.get(dir.getAbsolutePath(), fileName)).toFile();
         LOG.info("File for backup: " + createdFile.getAbsolutePath());
 
-        BackupHelper.backupDir(dir);
+        FileHelper.backupDir(dir);
 
         File backupDir = new File(dir.getParent(), dir.getName() + ".bak");
         assertTrue(backupDir.exists());
