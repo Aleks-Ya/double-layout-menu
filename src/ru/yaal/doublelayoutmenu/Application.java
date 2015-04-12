@@ -11,9 +11,9 @@ import java.util.List;
  * Использует классы приложения для достижения нужного результата.
  */
 class Application {
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
     private final File entryDir;
     private final Statistic statistic = new Statistic();
-    private Logger LOG = LoggerFactory.getLogger(Application.class);
 
     Application(File entryDir) {
         this.entryDir = entryDir;

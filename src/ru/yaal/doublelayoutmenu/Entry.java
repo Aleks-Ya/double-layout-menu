@@ -13,12 +13,6 @@ class Entry {
     public Entry() {
     }
 
-    public Entry(String name, String comment, File file) {
-        this.name = name;
-        this.comment = comment;
-        this.file = file;
-    }
-
     public String getName() {
         return name;
     }

@@ -3,7 +3,7 @@ package ru.yaal.doublelayoutmenu;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.Arrays;
+import java.util.Collections;
 
 class Helper {
     static String content(String name, String comment) {
@@ -23,14 +23,14 @@ class Helper {
     static File createEntryFile(File dir, String content) throws IOException {
         File entryFile = Files.createTempFile(dir.toPath(), "DoubleLayoutMenu_", ".desktop").toFile();
         entryFile.deleteOnExit();
-        Files.write(entryFile.toPath(), Arrays.asList(content));
+        Files.write(entryFile.toPath(), Collections.singletonList(content));
         return entryFile;
     }
 
     static File createEntryFile(String content) throws IOException {
         File entryFile = File.createTempFile("DoubleLayoutMenu_", ".desktop");
         entryFile.deleteOnExit();
-        Files.write(entryFile.toPath(), Arrays.asList(content));
+        Files.write(entryFile.toPath(), Collections.singletonList(content));
         return entryFile;
     }
 }

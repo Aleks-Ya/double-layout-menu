@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.assertEquals;
 
 public class EngToRusCharLayoutConverterTest {
-    private EngToRusCharLayoutConverter converter = new EngToRusCharLayoutConverter();
+    private final EngToRusCharLayoutConverter converter = new EngToRusCharLayoutConverter();
 
     @Test
     public void convert() {

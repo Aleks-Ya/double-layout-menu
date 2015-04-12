@@ -7,8 +7,8 @@ import java.util.List;
  * Хранение статистики работы программы.
  */
 class Statistic {
-    private List<Entry> passed = new ArrayList<>();
-    private List<Entry> processed = new ArrayList<>();
+    private final List<Entry> passed = new ArrayList<>();
+    private final List<Entry> processed = new ArrayList<>();
 
     void incPassed(Entry entry) {
         passed.add(entry);

@@ -14,8 +14,8 @@ import static ru.yaal.doublelayoutmenu.Helper.createEntryFile;
 
 public class EntryPersistHelperTest {
 
-    private String name = "Skype";
-    private String comment = "Skype Internet Telephony";
+    private final String name = "Skype";
+    private final String comment = "Skype Internet Telephony";
 
     @Test
     public void read() throws Exception {

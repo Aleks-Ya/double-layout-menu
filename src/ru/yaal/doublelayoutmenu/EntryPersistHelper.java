@@ -19,7 +19,7 @@ class EntryPersistHelper {
     private static final String NAME_PROPERTY = "Name";
     private static final String COMMENT_PROPERTY = "Comment";
 
-    static Entry read(File entryFile) throws IOException {
+    static Entry read(File entryFile) {
         Entry newEntry = null;
         try (BufferedReader br = new BufferedReader(new FileReader(entryFile))) {
             newEntry = new Entry();
