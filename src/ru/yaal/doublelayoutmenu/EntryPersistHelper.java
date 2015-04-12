@@ -47,16 +47,17 @@ class EntryPersistHelper {
         BackupHelper.backup(entry.getFile());
         List<String> fileContent = Files.readAllLines(entry.getFile().toPath());
         boolean commentFound = false;
+        String newComment = COMMENT_PROPERTY + "=" + entry.getComment();
         for (int i = 0; i < fileContent.size(); i++) {
             String line = fileContent.get(i).trim();
             if (line.startsWith(COMMENT_PROPERTY)) {
-                fileContent.set(i, COMMENT_PROPERTY + "=" + entry.getComment());
+                fileContent.set(i, newComment);
                 commentFound = true;
                 break;
             }
         }
         if (!commentFound) {
-            fileContent.add(entry.getComment());
+            fileContent.add(newComment);
         }
         Files.write(entry.getFile().toPath(), fileContent, Charset.defaultCharset());
     }

@@ -36,18 +36,21 @@ public class EntryPersistHelperTest {
     }
 
     @Test
+    public void readEmptyComment() throws Exception {
+        File entryFile = createEntryFile(content(name, ""));
+        Entry entry = EntryPersistHelper.read(entryFile);
+        assertEquals(entry.getName(), name);
+        assertThat(entry.getComment(), isEmptyString());
+        assertEquals(entry.getFile(), entryFile);
+    }
+
+    @Test
     public void save() throws Exception {
         File entryFile = createEntryFile(content(name, comment));
 
-        //expected
-        createEntryFile(content("Telegram", "Telegram Messenger"));
-
         Properties expProperties = new Properties();
         expProperties.load(new FileInputStream(entryFile));
-        expProperties.setProperty("Name", name);
-        expProperties.setProperty("Comment", comment);
 
-        //actual
         Entry entry = EntryPersistHelper.read(entryFile);
         entry.setName(name);
         entry.setComment(comment);
@@ -57,7 +60,30 @@ public class EntryPersistHelperTest {
         Properties actProperties = new Properties();
         actProperties.load(new FileInputStream(entry.getFile()));
 
-        //verify
+        assertEquals(actProperties, expProperties);
+    }
+
+    /**
+     * В исходном файле не было свойства Comment,
+     * значит оно должно быть добавлено.
+     */
+    @Test
+    public void saveNoCommentLine() throws Exception {
+        File entryFile = createEntryFile(content(name, null));
+
+        Properties expProperties = new Properties();
+        expProperties.load(new FileInputStream(entryFile));
+        expProperties.setProperty("Comment", comment);
+
+        Entry entry = EntryPersistHelper.read(entryFile);
+        entry.setName(name);
+        entry.setComment(comment);
+
+        EntryPersistHelper.save(entry);
+
+        Properties actProperties = new Properties();
+        actProperties.load(new FileInputStream(entry.getFile()));
+
         assertEquals(actProperties, expProperties);
     }
 }

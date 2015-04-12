@@ -1,15 +1,21 @@
 package ru.yaal.doublelayoutmenu;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Collections;
 
 class Helper {
+    private static final Logger LOG = LoggerFactory.getLogger(Helper.class);
+
     static String content(String name, String comment) {
+        String commentLine = comment != null ? "Comment=" + comment + "\n" : "";
         return "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
-                "Comment=" + comment + "\n" +
+                commentLine +
                 "Exec=env PULSE_LATENCY_MSEC=60 skype %U\n" +
                 "Icon=skype.png\n" +
                 "Terminal=false\n" +
@@ -29,6 +35,7 @@ class Helper {
 
     static File createEntryFile(String content) throws IOException {
         File entryFile = File.createTempFile("DoubleLayoutMenu_", ".desktop");
+        LOG.info("Created file: " + entryFile.getAbsolutePath());
         entryFile.deleteOnExit();
         Files.write(entryFile.toPath(), Collections.singletonList(content));
         return entryFile;
