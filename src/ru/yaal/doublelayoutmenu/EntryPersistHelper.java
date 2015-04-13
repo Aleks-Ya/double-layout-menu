@@ -16,9 +16,12 @@ import java.util.List;
  */
 class EntryPersistHelper {
     private static final Logger LOG = LoggerFactory.getLogger(EntryPersistHelper.class);
-    private static final String NAME_PROPERTY = "Name";
-    private static final String COMMENT_PROPERTY = "Comment";
+    private static final String NAME_PROPERTY = "Name=";
+    private static final String COMMENT_PROPERTY = "Comment=";
 
+    /**
+     * todo Читать только из секции [Desktop Entry]
+     */
     static Entry read(File entryFile) {
         Entry newEntry = null;
         try (BufferedReader br = new BufferedReader(new FileReader(entryFile))) {
@@ -46,7 +49,7 @@ class EntryPersistHelper {
     static void save(Entry entry) throws IOException {
         List<String> fileContent = Files.readAllLines(entry.getFile().toPath());
         boolean commentFound = false;
-        String newComment = COMMENT_PROPERTY + "=" + entry.getComment();
+        String newComment = COMMENT_PROPERTY + entry.getComment();
         for (int i = 0; i < fileContent.size(); i++) {
             String line = fileContent.get(i).trim();
             if (line.startsWith(COMMENT_PROPERTY)) {
