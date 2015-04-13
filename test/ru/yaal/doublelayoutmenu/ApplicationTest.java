@@ -24,7 +24,7 @@ public class ApplicationTest {
         entry1File.deleteOnExit();
         String expName = "Entry1";
         String expComment = "Comment to entry1";
-        List<String> expLines = Arrays.asList("Name=" + expName, "Comment=" + expComment);
+        List<String> expLines = Arrays.asList("[Desktop Entry]", "Name=" + expName, "Comment=" + expComment);
         Files.write(entry1File.toPath(), expLines);
 
         Application app = new Application(entryDir, Files.createTempDirectory("DoubleLayoutMenu_").toFile());

@@ -1,6 +1,7 @@
 package ru.yaal.doublelayoutmenu;
 
 import org.testng.annotations.Test;
+import org.testng.reporters.Files;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -71,19 +72,32 @@ public class EntryPersistHelperTest {
     public void saveNoCommentLine() throws Exception {
         File entryFile = createEntryFile(content(name, null));
 
-        Properties expProperties = new Properties();
-        expProperties.load(new FileInputStream(entryFile));
-        expProperties.setProperty("Comment", comment);
-
         Entry entry = EntryPersistHelper.read(entryFile);
         entry.setName(name);
         entry.setComment(comment);
 
         EntryPersistHelper.save(entry);
 
-        Properties actProperties = new Properties();
-        actProperties.load(new FileInputStream(entry.getFile()));
+        String actual = Files.readFile(entry.getFile());
+        String expected = "#My desktop entry file\n" +
+                "[Header Section]\n" +
+                "Name=Header\n" +
+                "Comment=Super header\n" +
+                "[Desktop Entry]\n" +
+                "Name=" + name + "\n" +
+                "Exec=env PULSE_LATENCY_MSEC=60 skype %U\n" +
+                "Icon=skype.png\n" +
+                "Terminal=false\n" +
+                "Type=Application\n" +
+                "Encoding=UTF-8\n" +
+                "Categories=Network;Application;\n" +
+                "MimeType=x-scheme-handler/skype;\n" +
+                "X-KDE-Protocols=skype\n" +
+                "Comment="+ comment + "\n" +
+                "[Bottom Section]\n" +
+                "Name=Footer\n" +
+                "Comment=Super footer\n";
 
-        assertEquals(actProperties, expProperties);
+        assertEquals(actual.trim(), expected.trim());
     }
 }

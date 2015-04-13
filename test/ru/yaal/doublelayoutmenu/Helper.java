@@ -13,7 +13,11 @@ class Helper {
 
     static String content(String name, String comment) {
         String commentLine = comment != null ? "Comment=" + comment + "\n" : "";
-        return "[Desktop Entry]\n" +
+        return "#My desktop entry file\n" +
+                "[Header Section]\n" +
+                "Name=Header\n" +
+                "Comment=Super header\n" +
+                "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
                 commentLine +
                 "Exec=env PULSE_LATENCY_MSEC=60 skype %U\n" +
@@ -23,7 +27,10 @@ class Helper {
                 "Encoding=UTF-8\n" +
                 "Categories=Network;Application;\n" +
                 "MimeType=x-scheme-handler/skype;\n" +
-                "X-KDE-Protocols=skype";
+                "X-KDE-Protocols=skype\n" +
+                "[Bottom Section]\n" +
+                "Name=Footer\n" +
+                "Comment=Super footer\n";
     }
 
     static File createEntryFile(File dir, String content) throws IOException {

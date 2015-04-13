@@ -10,7 +10,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 import static ru.yaal.doublelayoutmenu.Helper.content;
 
 public class EntryDirTest {
