@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Читает пункты меню, находящиеся в данной папке.
+ * todo Поиск файлов во вложенных папках
  */
 class EntryDir {
     static List<Entry> getEntries(File entryDir) {
