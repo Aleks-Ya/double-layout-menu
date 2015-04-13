@@ -34,7 +34,7 @@ class Application {
         for (Entry entry : entries) {
             LOG.info("Process entry: " + entry.getName());
             String comment = entry.getComment();
-            String rusName = "~" + StringLayoutConverter.engToRus(entry.getName()) + "~";
+            String rusName = "~" + LayoutConverter.engToRus(entry.getName()) + "~";
             if (!comment.contains(rusName)) {
                 entry.setComment(comment + " " + rusName);
                 if (entry.getFile().canWrite()) {

@@ -2,15 +2,15 @@ package ru.yaal.doublelayoutmenu;
 
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
-public class StringLayoutConverterTest {
+public class LayoutConverterTest {
 
     @Test
     public void lowCase() {
         final String source = "qwertyuiop[]asdfghjkl;' zxcvbnm,./";
         final String exp = "йцукенгшщзхъфывапролджэ ячсмитьбю.";
-        final String act = StringLayoutConverter.engToRus(source);
+        final String act = LayoutConverter.engToRus(source);
         assertEquals(act, exp);
     }
 
@@ -18,7 +18,7 @@ public class StringLayoutConverterTest {
     public void upperCase() {
         final String source = "QWERTYUIOP{}ASDFGHJKL:\" ZXCVBNM<>?";
         final String exp = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭ ЯЧСМИТЬБЮ,";
-        final String act = StringLayoutConverter.engToRus(source);
+        final String act = LayoutConverter.engToRus(source);
         assertEquals(act, exp);
     }
 }
