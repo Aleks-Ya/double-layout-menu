@@ -15,20 +15,6 @@ public class FileHelperTest {
     private static final Logger LOG = LoggerFactory.getLogger(FileHelperTest.class);
 
     @Test
-    public void backup() throws Exception {
-        File origin = File.createTempFile("DoubleLayoutMenu_BackupHelperTest_", ".tmp");
-
-        FileHelper.backup(origin);
-        assertTrue(new File(origin.getAbsolutePath() + ".bak").exists());
-
-        FileHelper.backup(origin);
-        assertTrue(new File(origin.getAbsolutePath() + ".bak1").exists());
-
-        FileHelper.backup(origin);
-        assertTrue(new File(origin.getAbsolutePath() + ".bak2").exists());
-    }
-
-    @Test
     public void backupDir() throws Exception {
         File dir = Files.createTempDirectory("BackupHelper_").toFile();
         LOG.info("Original dir: " + dir.getAbsolutePath());
