@@ -5,6 +5,7 @@ version='1.0'
 mainClassName = "ru.yaal.doublelayoutmenu.Main"
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
+defaultTasks 'run'
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.12', 'org.slf4j:slf4j-simple:1.7.12',
